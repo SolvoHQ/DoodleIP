@@ -2,10 +2,10 @@ import Image from "next/image";
 import { WaitlistForm } from "@/components/waitlist-form";
 
 const slides = [
-  { src: "/images/carousel-1.png", alt: "封面 - 5个方法提升你的内容质量" },
-  { src: "/images/carousel-2.png", alt: "方法一 - 找到你的节奏" },
-  { src: "/images/carousel-3.png", alt: "方法二 - 保持一致性" },
-  { src: "/images/carousel-4.png", alt: "关注我获取更多干货" },
+  { src: "/images/carousel-1.png", alt: "封面 - 打工人必备的5个摸鱼神器" },
+  { src: "/images/carousel-2.png", alt: "神器1 - Notion 万能笔记" },
+  { src: "/images/carousel-3.png", alt: "这本书改变了我的认知" },
+  { src: "/images/carousel-4.png", alt: "关注我一起高效摸鱼" },
 ];
 
 export function Hero() {
