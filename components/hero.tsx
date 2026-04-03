@@ -47,19 +47,19 @@ export function Hero() {
         </div>
 
         {/* Real carousel mockup */}
-        <div className="flex gap-3 sm:gap-4 justify-center flex-wrap max-w-[800px]">
+        <div className="flex gap-4 sm:gap-5 justify-center flex-wrap max-w-[1000px]">
           {slides.map((slide, i) => (
             <div
               key={i}
-              className={`w-[130px] sm:w-[160px] rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] overflow-hidden ${
+              className={`w-[150px] sm:w-[200px] md:w-[220px] rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] overflow-hidden ${
                 ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"][i]
               }`}
             >
               <Image
                 src={slide.src}
                 alt={slide.alt}
-                width={160}
-                height={200}
+                width={220}
+                height={275}
                 className="w-full h-auto"
               />
             </div>
