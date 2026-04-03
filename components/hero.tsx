@@ -1,3 +1,5 @@
+import { WaitlistForm } from "@/components/waitlist-form";
+
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center bg-[#FFF8F0]">
@@ -26,8 +28,9 @@ export function Hero() {
           给内容创作者的专属 IP 生成器。AI 帮你创造一个独一无二的涂鸦角色，从此你的内容有脸、有辨识度、被人记住。
         </p>
 
-        {/* Waitlist form placeholder — will be replaced by client component in Task 5 */}
-        <div className="mb-12 text-gray-400">[waitlist form]</div>
+        <div className="mb-12">
+          <WaitlistForm />
+        </div>
 
         {/* Mockup cards */}
         <div className="flex gap-4 justify-center flex-wrap max-w-[700px]">
