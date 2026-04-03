@@ -40,3 +40,4 @@ next-env.d.ts
 supabase/.temp/
 Gemini Generated Image*
 Google Gemini Generated Image*
+raw-assets/
