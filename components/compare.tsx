@@ -8,22 +8,22 @@ export function Compare() {
       </h2>
       <p className="text-lg text-gray-400 mb-12">同样的内容，完全不同的辨识度</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center">
         {/* Before */}
         <div className="flex flex-col gap-3">
           <span className="text-sm font-bold uppercase tracking-widest text-gray-400">
             Before
           </span>
-          <div className="aspect-[4/5] max-h-[280px] mx-auto w-full rounded-xl border-[2.5px] border-[#2D2D2D] bg-[#f0f0f0] shadow-[2px_2px_0_#ccc] flex flex-col items-center justify-center p-5 gap-2">
-            <span className="text-sm text-gray-400 mb-3">纯文字截图</span>
-            <div className="w-4/5 flex flex-col gap-1.5">
-              <div className="h-1.5 bg-[#ddd] rounded-full w-full" />
-              <div className="h-1.5 bg-[#ddd] rounded-full w-[65%]" />
-              <div className="h-1.5 bg-[#ddd] rounded-full w-[80%]" />
-              <div className="h-1.5 bg-[#ddd] rounded-full w-[50%]" />
-            </div>
-            <span className="text-xs text-gray-300 mt-4">刷过就忘</span>
+          <div className="rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[2px_2px_0_#ccc] overflow-hidden">
+            <Image
+              src="/images/before-post.png"
+              alt="纯文字帖子 - 没有辨识度"
+              width={400}
+              height={500}
+              className="w-full h-auto"
+            />
           </div>
+          <span className="text-xs text-gray-400">刷过就忘 😴</span>
         </div>
 
         {/* Arrow */}
@@ -34,15 +34,16 @@ export function Compare() {
           <span className="text-sm font-bold uppercase tracking-widest text-[#FF6B35]">
             After
           </span>
-          <div className="aspect-[4/5] max-h-[280px] mx-auto w-full rounded-xl border-[2.5px] border-[#2D2D2D] bg-[#FFD93D] shadow-[4px_4px_0_#2D2D2D] flex flex-col items-center justify-center p-5">
-            <Image src="/images/pose-celebrate.png" alt="IP character" width={80} height={80} className="mb-2 object-contain" />
-            <div className="w-4/5 flex flex-col gap-1.5">
-              <div className="h-1.5 bg-black/10 rounded-full w-full" />
-              <div className="h-1.5 bg-black/10 rounded-full w-[65%]" />
-              <div className="h-1.5 bg-black/10 rounded-full w-[80%]" />
-            </div>
-            <span className="text-xs font-bold mt-4">一眼认出是你</span>
+          <div className="rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] overflow-hidden">
+            <Image
+              src="/images/carousel-1.png"
+              alt="带 IP 角色的轮播图 - 一眼认出"
+              width={400}
+              height={500}
+              className="w-full h-auto"
+            />
           </div>
+          <span className="text-xs font-bold text-[#FF6B35]">一眼认出是你 🔥</span>
         </div>
       </div>
     </section>
