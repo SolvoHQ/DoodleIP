@@ -53,7 +53,7 @@ export function Hero() {
               key={i}
               className={`w-[110px] h-[147px] sm:w-[140px] sm:h-[187px] rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] flex flex-col items-center justify-center p-3 text-center ${card.bg} ${card.text} ${card.rotate}`}
             >
-              <Image src={card.pose} alt="IP character" width={60} height={60} className="mb-1 object-contain" />
+              <Image src={card.pose} alt="IP character" width={90} height={90} className="mb-1 object-contain sm:w-[90px] sm:h-[90px] w-[65px] h-[65px]" />
               <div className="text-[10px] sm:text-xs font-bold leading-snug whitespace-pre-line">
                 {card.label}
               </div>
