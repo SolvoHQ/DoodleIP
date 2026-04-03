@@ -1,4 +1,12 @@
+import Image from "next/image";
 import { WaitlistForm } from "@/components/waitlist-form";
+
+const cards = [
+  { bg: "bg-[#FF6B35]", text: "text-white", rotate: "-rotate-3", label: "5个方法提升\n你的内容质量", pose: "/images/pose-stand.png" },
+  { bg: "bg-white", text: "text-[#2D2D2D]", rotate: "rotate-1", label: "方法一\n找到你的节奏", pose: "/images/pose-point.png" },
+  { bg: "bg-[#00D28C]", text: "text-white", rotate: "-rotate-1", label: "方法二\n保持一致性", pose: "/images/pose-think.png" },
+  { bg: "bg-[#FFD93D]", text: "text-[#2D2D2D]", rotate: "rotate-2", label: "关注我获取\n更多干货！", pose: "/images/pose-celebrate.png" },
+];
 
 export function Hero() {
   return (
@@ -40,18 +48,13 @@ export function Hero() {
 
         {/* Mockup cards */}
         <div className="flex gap-4 justify-center flex-wrap max-w-[700px]">
-          {[
-            { bg: "bg-[#FF6B35]", text: "text-white", rotate: "-rotate-3", label: "5个方法提升\n你的内容质量" },
-            { bg: "bg-white", text: "text-[#2D2D2D]", rotate: "rotate-1", label: "方法一\n找到你的节奏" },
-            { bg: "bg-[#00D28C]", text: "text-white", rotate: "-rotate-1", label: "方法二\n保持一致性" },
-            { bg: "bg-[#FFD93D]", text: "text-[#2D2D2D]", rotate: "rotate-2", label: "关注我获取\n更多干货！" },
-          ].map((card, i) => (
+          {cards.map((card, i) => (
             <div
               key={i}
-              className={`w-[110px] h-[147px] sm:w-[140px] sm:h-[187px] rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] flex flex-col items-center justify-center p-4 text-center ${card.bg} ${card.text} ${card.rotate}`}
+              className={`w-[110px] h-[147px] sm:w-[140px] sm:h-[187px] rounded-xl border-[2.5px] border-[#2D2D2D] shadow-[4px_4px_0_#2D2D2D] flex flex-col items-center justify-center p-3 text-center ${card.bg} ${card.text} ${card.rotate}`}
             >
-              <div className="text-4xl mb-2">(=^.^=)</div>
-              <div className="text-xs font-bold leading-snug whitespace-pre-line">
+              <Image src={card.pose} alt="IP character" width={60} height={60} className="mb-1 object-contain" />
+              <div className="text-[10px] sm:text-xs font-bold leading-snug whitespace-pre-line">
                 {card.label}
               </div>
             </div>

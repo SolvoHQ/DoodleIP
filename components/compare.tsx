@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Compare() {
   return (
     <section className="py-20 px-6 max-w-[900px] mx-auto text-center">
@@ -33,7 +35,7 @@ export function Compare() {
             After
           </span>
           <div className="aspect-[4/5] max-h-[280px] mx-auto w-full rounded-xl border-[2.5px] border-[#2D2D2D] bg-[#FFD93D] shadow-[4px_4px_0_#2D2D2D] flex flex-col items-center justify-center p-5">
-            <div className="text-5xl mb-3">(=^.^=)</div>
+            <Image src="/images/pose-celebrate.png" alt="IP character" width={80} height={80} className="mb-2 object-contain" />
             <div className="w-4/5 flex flex-col gap-1.5">
               <div className="h-1.5 bg-black/10 rounded-full w-full" />
               <div className="h-1.5 bg-black/10 rounded-full w-[65%]" />
