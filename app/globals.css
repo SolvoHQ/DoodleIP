@@ -8,3 +8,12 @@
 .animate-wiggle {
   animation: wiggle 3s ease-in-out infinite;
 }
+
+@keyframes toast-in {
+  0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.animate-toast {
+  animation: toast-in 0.3s ease-out;
+}
