@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { Gallery } from "@/components/gallery";
 import { Compare } from "@/components/compare";
 import { Steps } from "@/components/steps";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Gallery />
       <Compare />
       <Steps />
 
