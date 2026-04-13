@@ -1,7 +1,7 @@
 # Step 0 — IP Aesthetic Feasibility Experiment
 
 **Date:** 2026-04-13
-**Status:** Approved
+**Status:** Approved (amended 2026-04-13 to run Gemini-only first pass; FLUX deferred pending Gemini outcome)
 **Owner:** Weston
 
 ## Context and motivation
@@ -56,14 +56,16 @@ The style is **minimal hand-drawn doodle**. Reference anchors:
 
 **Archetype:** Single cat character. Stick-figure is a secondary run only if cat succeeds.
 
-**Models (2):**
+**Models (1 for first pass, 2 if needed):**
 
-| Model | Access | Rationale |
-|---|---|---|
-| Gemini 2.5 Flash Image (nano-banana) | Google AI Studio API | Strong style adherence; known to handle minimalist prompts well |
-| FLUX.1 [dev] | fal.ai | Good at line art; high prompt tunability |
+| Model | Access | Rationale | First pass? |
+|---|---|---|---|
+| Gemini 2.5 Flash Image (nano-banana) | Google AI Studio API | Strong style adherence; known to handle minimalist prompts well | ✅ yes |
+| FLUX.1 [dev] | fal.ai | Good at line art; high prompt tunability | ⏸ deferred (requires fal.ai prepayment; add only if Gemini fails) |
 
 Explicitly **not testing**: `gpt-image-1` (over-renders toward commercial illustration), Midjourney (no official API).
+
+**First-pass scope amendment (2026-04-13):** fal.ai requires prepayment and we want to avoid that cost unless Gemini proves insufficient. First-pass run uses Gemini only (12 images: 3 strategies × 4 samples). If Gemini produces a green outcome, FLUX is unnecessary. If Gemini produces red or yellow, we add FLUX before declaring the hypothesis dead.
 
 **Prompt strategies (3 levels, progressively more constrained):**
 
@@ -73,7 +75,9 @@ Explicitly **not testing**: `gpt-image-1` (over-renders toward commercial illust
 
 **Samples per configuration:** 4
 
-**Total images:** 2 models × 3 strategies × 4 samples = **24 images** (primary cat run)
+**Total images (first pass):** 1 model × 3 strategies × 4 samples = **12 images** (Gemini cat run)
+
+**Total images (if FLUX added):** 2 models × 3 strategies × 4 samples = **24 images**
 
 ### Evaluation
 
@@ -81,11 +85,11 @@ Single criterion, judged by self: **"Would I use this as the IP representing me?
 
 Each image gets a binary pass/fail. Then classify the run:
 
-| Outcome | Definition | Action |
+| Outcome | Definition | Action (first pass, Gemini only) |
 |---|---|---|
-| 🟢 Green | ≥ 3 passes, clustered under a stable (model × strategy) combination | Declare winner; optionally run stick-figure secondary; proceed to design Step 1 |
-| 🟡 Yellow | 1-2 passes, scattered across configurations (looks like luck) | Add a 4th prompt strategy (e.g., few-shot with reference image as style anchor); rerun 12 more images. If still yellow after second round, downgrade to red. |
-| 🔴 Red | 0 passes, or all outputs are visibly AI slop | Stop. Document failure modes. Do not proceed to Step 1. Trigger product pivot decision. |
+| 🟢 Green | ≥ 3 passes, clustered under a stable strategy | Declare winner; optionally run stick-figure secondary; proceed to design Step 1. FLUX not needed. |
+| 🟡 Yellow | 1-2 passes, scattered across strategies (looks like luck) | Add FLUX.1 [dev] as second model (requires fal.ai prepay) and rerun; if still yellow after FLUX, try a 4th prompt strategy with reference-image style anchor. |
+| 🔴 Red | 0 passes, or all outputs are visibly AI slop | Do **not** pivot yet. Add FLUX.1 [dev] before concluding — Gemini alone failing is not sufficient to refute the hypothesis. Only if FLUX also reds out do we stop and trigger pivot. |
 
 ## Code structure
 
@@ -126,14 +130,15 @@ Raw output images in `outputs/` are **not** committed.
 
 ## Budget
 
+**First pass (Gemini only):**
+
 | Item | Unit cost (estimate) | Count | Subtotal |
 |---|---|---|---|
 | Gemini 2.5 Flash Image | ~$0.04/image | 12 | $0.48 |
-| FLUX.1 [dev] via fal.ai | ~$0.03/image | 12 | $0.36 |
-| Baseline | | | **~$1** |
-| Iteration buffer (prompt tuning, reruns) | 3× | | ~$3 |
-| Optional stick-figure secondary run | | 24 | ~$1 |
-| **Cap** | | | **< $5** |
+| Iteration buffer (prompt tuning, reruns) | 3× | | ~$1.50 |
+| **First pass cap** | | | **< $2** |
+
+**If FLUX added later:** +$0.36 baseline + iteration buffer ≈ another ~$2. Total experiment cap if both models run: **< $5**.
 
 ## Timeline
 
@@ -148,9 +153,12 @@ Raw output images in `outputs/` are **not** committed.
 
 ## Prerequisites (before implementation)
 
+**First pass:**
 1. Google AI Studio account, obtain Gemini API key
-2. fal.ai account, prepay $10 (will be underused)
-3. No other setup — repo already has Node and TypeScript
+2. No other setup — repo already has Node and TypeScript
+
+**If FLUX added later:**
+3. fal.ai account, prepay $10 (will be underused)
 
 ## What we do NOT do based on Step 0 results
 
