@@ -82,3 +82,43 @@ Step 1 will test whether the `doodle` strategy can produce a recognizable single
 3. How to evaluate "same character" when the style is intentionally wobbly — what recognition cues are load-bearing (silhouette shape, face features, proportions)?
 
 Secondary follow-up (optional, low priority): rerun this experiment with `archetype = "stick-figure"` to confirm the doodle strategy generalizes beyond cats. Expected 1-hour / ~$0.50 effort.
+
+---
+
+## Round 2 — Archetype variety (2026-04-13)
+
+**Question:** Cat worked, but nobody builds a personal IP around a generic cat. Does the `doodle` strategy generalize to 6 more distinctive creature shapes?
+
+**Setup:** 7 archetypes × `doodle` × 3 samples = 21 images. Archetypes: `stick-figure`, `blob-creature`, `stick-square`, `ghost-simple`, `one-eye-monster`, `potato-person`, `chubby-frog`.
+
+**Outcome:** 🟢 21/21 pass. Style stability confirmed across archetypes.
+
+**Tiered winners:**
+- **Top tier (strongest IP potential):** `potato-person`, `one-eye-monster`, `chubby-frog` — distinctive silhouettes, no "already exists" problem
+- **Middle tier (style OK, IP weak):** `blob-creature` (too Molang-adjacent), `stick-figure` (too generic), `ghost-simple` (too Halloween-template)
+- **Needs prompt tuning:** `stick-square` — Gemini interpreted "rectangular torso" as "wearing a dress", not a robot-like block body
+
+## Round 3 — Color strategies (2026-04-13)
+
+**Question:** Xiaohongshu research surfaced that the algorithmic sweet spot is "轻着色简笔" (lightly colored hand-drawn), not pure black-and-white line art. Can Gemini hold the doodle aesthetic while adding color?
+
+**Setup:** 2 winning archetypes (`potato-person`, `one-eye-monster`) × 3 color strategies (`crayon`, `watercolor`, `accent`) × 2 samples = 12 images.
+
+**Outcome:** 🟢 12/12 pass. All three color strategies produce usable hand-drawn results without tipping into AI slop.
+
+| Strategy | Description | Verdict |
+|---|---|---|
+| `crayon` | Black pen outline + soft muted crayon fills, slightly outside the lines, cream paper | Most polished, closest to commercial children's book. Warmest. |
+| `watercolor` | Loose pen outline + pastel watercolor wash with bleeding edges | Artistic, slightly less stable than crayon |
+| `accent` | Pure black line + one small color highlight (cheeks, scarf) | Most minimal; preserves raw doodle feel while adding personality |
+
+See visual evidence: `round3-crayon-potato.png`, `round3-accent-potato.png`, `round3-crayon-monster.png`, `round3-accent-monster.png`.
+
+**Implication:** The product does not need to lock to black-and-white only. Color is a productive axis for personalization and for matching XHS audience preferences.
+
+## Combined takeaways (Round 1-3 synthesis)
+
+1. **Style stability is solved.** `doodle`-family prompts produce consistent "hand-drawn not AI" outputs across 8 archetypes and 4 color variants (black / crayon / watercolor / accent). Over 45 total generations, zero AI slop.
+2. **The effective knobs are negative constraints + imperfection keywords.** Artist anchoring helps but isn't load-bearing. `no color`, `no background`, `no shading`, `deliberately imperfect`, `wobbly` do the real work.
+3. **The open bottleneck is no longer style — it's content.** Market research showed that on XHS the IP character is ~20% of what drives creator success; the other 80% is vertical positioning and 文案. Scope for v1 of the product must now include content scaffolding, not just character generation.
+4. **Pose consistency (original Step 1) is deprioritized.** Not because it's unimportant, but because "a user's IP across many posts" is a less urgent unlock than "a user's IP in one strong post alongside good 文案 and a vertical-appropriate structure". Pose consistency rejoins the roadmap after the v1 MVP ships.
