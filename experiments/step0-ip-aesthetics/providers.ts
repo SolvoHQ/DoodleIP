@@ -1,15 +1,19 @@
 const GEMINI_MODEL = "gemini-2.5-flash-image";
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
-export async function callGemini(
+type Part =
+  | { text: string }
+  | { inlineData: { mimeType: string; data: string } };
+
+async function callGeminiWithParts(
   apiKey: string,
-  prompt: string
+  parts: Part[]
 ): Promise<Buffer> {
   const res = await fetch(`${GEMINI_ENDPOINT}?key=${apiKey}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
+      contents: [{ parts }],
       generationConfig: { responseModalities: ["IMAGE"] },
     }),
   });
@@ -36,4 +40,23 @@ export async function callGemini(
   }
 
   return Buffer.from(b64, "base64");
+}
+
+export async function callGemini(
+  apiKey: string,
+  prompt: string
+): Promise<Buffer> {
+  return callGeminiWithParts(apiKey, [{ text: prompt }]);
+}
+
+export async function callGeminiWithImage(
+  apiKey: string,
+  prompt: string,
+  referenceImage: Buffer,
+  mimeType: string = "image/png"
+): Promise<Buffer> {
+  return callGeminiWithParts(apiKey, [
+    { inlineData: { mimeType, data: referenceImage.toString("base64") } },
+    { text: prompt },
+  ]);
 }
