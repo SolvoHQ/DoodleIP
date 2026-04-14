@@ -29,6 +29,7 @@ yarn-error.log*
 # env files
 .env*
 !.env.example
+!.env.local.example
 
 # vercel
 .vercel
@@ -47,3 +48,4 @@ experiments/**/outputs/*
 !experiments/**/outputs/.gitkeep
 experiments/**/.env.experiment
 !experiments/**/.env.experiment.example
+.superpowers/
